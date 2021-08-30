@@ -14,6 +14,10 @@ class Book {
         return this._title + " " + _isAvailable;
     };
 
+    get availability() {
+        return this.getAvailability();
+    }
+
     getTitle() {
         return this._title;
     }
@@ -24,13 +28,13 @@ class Book {
         } else if (this._numCopies < numSold) {
             return "We don't have so much copies to sell"
         } else {
-            this._numCopies = this._numCopies - numSold;
+            this._numCopies -= numSold;
             return "succesfully sold";
         }
     };
 
     restock(numCopies = 5) {
-        this._numCopies = this._numCopies + numCopies;
+        this._numCopies += numCopies;
     }
 };
 
@@ -39,7 +43,7 @@ let soyer = new Book("Tom Soyer", "Mark Twen", 6854, 78);
 let kastaneda = new Book("Don Huan", "Kastaneda Karlos", 2744, 10);
 let harry = new Book("Harry Potter", "Joan Rowling", 4567, 60);
 
-console.log(warAndPiece.getAvailability()); //low stock
+console.log(warAndPiece.availability); //low stock
 console.log(warAndPiece.sell(10)); //we don't have
 warAndPiece.restock(10);
 console.log(warAndPiece.getAvailability()); //in stock
